@@ -1,0 +1,41 @@
+/* import PNotify from "./node_modules/pnotify/dist/es/PNotify.js"; */
+
+export default class ApiServise {
+  constructor() {
+    this.searchQuery = "";
+  }
+
+  fetchCountries() {
+    const BASE_URL = `https://restcountries.eu/rest/v2/name/${this.searchQuery}`;
+    return fetch(BASE_URL).then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        PNotify.notice({
+          text: "I'm an error message.",
+        });
+      }
+    });
+  }
+  get query() {
+    return this.searchQuery;
+  }
+  set query(newQuery) {
+    this.searchQuery = newQuery;
+  }
+}
+
+function renderCountryCard(name) {
+  const markup = inputTemplate(name);
+  refs.container.innerHTML = markup;
+}
+
+/* function fetchCountries() {
+  const url = `https://restcountries.eu/rest/v2/name/${searchQuery}`;
+  return fetch(url).then((response) => response.json());
+}
+ */
+/* function onFetchError(error) {
+  alert("something is wrong!!!");
+}
+ */
