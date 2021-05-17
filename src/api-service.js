@@ -1,4 +1,4 @@
-import { error } from "@pnotify/core";
+import { notice } from "@pnotify/core";
 import "@pnotify/core/dist/PNotify.css";
 import "@pnotify/core/dist/BrightTheme.css";
 
@@ -13,8 +13,8 @@ export default class ApiServise {
       if (response.ok) {
         return response.json();
       } else {
-        error({
-          text: "I'm an error message.",
+        notice({
+          text: "No any country is chosen",
         });
       }
     });
