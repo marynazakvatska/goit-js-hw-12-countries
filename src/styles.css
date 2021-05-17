@@ -20,18 +20,33 @@ body {
 }
 
 .input {
+  display: block;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 50px;
-}
-/* 
-.card {
-  padding: auto;
-}
- */
-.country-title {
-  font-size: 36px;
+  margin-top: 20px;
 }
 
-h2 {
+.countries-list {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+.card-img {
+  display: flex;
+}
+.country-title {
+  text-align: center;
+}
+.image {
+  margin-left: 50px;
+}
+.card {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /*  margin-right: -50%; */
+  transform: translate(-50%, -50%);
 }

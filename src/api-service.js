@@ -1,4 +1,6 @@
-/* import PNotify from "./node_modules/pnotify/dist/es/PNotify.js"; */
+import { error } from "@pnotify/core";
+import "@pnotify/core/dist/PNotify.css";
+import "@pnotify/core/dist/BrightTheme.css";
 
 export default class ApiServise {
   constructor() {
@@ -11,7 +13,7 @@ export default class ApiServise {
       if (response.ok) {
         return response.json();
       } else {
-        PNotify.notice({
+        error({
           text: "I'm an error message.",
         });
       }

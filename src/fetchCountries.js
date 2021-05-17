@@ -2,8 +2,9 @@ import inputTemplate from "./template.hbs";
 import countriesList from "./countries.hbs";
 import { debounce } from "lodash";
 import ApiServise from "./api-service.js";
-
-/* import PNotify from "./../node_modules/pnotify/dist/es/PNotify.js"; */
+import { error } from "@pnotify/core";
+import "@pnotify/core/dist/PNotify.css";
+import "@pnotify/core/dist/BrightTheme.css";
 
 const refs = {
   input: document.querySelector("input"),
@@ -21,7 +22,7 @@ function onSearch(e) {
 
   apiServise.fetchCountries().then((data) => {
     if (data.length > 10) {
-      PNotify.error({
+      error({
         text: "Too many matches found. Please enter a more spesific query!",
       });
     } else if (data.length > 1) {
@@ -42,65 +43,3 @@ function countryMarkup(items) {
 function clearCardList() {
   refs.countriesList.innerHTML = "";
 }
-
-/* 
-
-function renderCountryCard(name) {
-  const markup = inputTemplate(name);
-  refs.container.innerHTML = markup;
-  console.log(markup);
-}
-
-function fetchCountries(name) {
-  const url = `https://restcountries.eu/rest/v2/name/${name}`;
-  return fetch(url).then((response) => response.json());
-}
-
-function onFetchError(error) {
-  alert("something is wrong!!!");
-}
- */
-
-/* 
-fetch("https://restcountries.eu/rest/v2/name/france")
-  .then((response) => {
-    return response.json();
-  })
-  .then((name) => {
-    console.log(name);
-    const markup = inputTemplate(name);
-    refs.container.innerHTML = markup;
-    console.log(markup);
-  })
-  .catch((error) => {
-    console.log(error);
-  });
- */
-
-/* 
-const refs = {
-  container: document.querySelector(".js-container"),
-  searchForm: document.querySelector(".js-rearch-form"),
-};
-refs.searchForm.addEventListener("input", onSearch);
-let searchQuery = "";
-function onSearch(e) {
-  const form = e.currentTarget;
-  console.log(form.elements);
-  searchQuery = form.elements.query.value; //значение инпута во время сабмита формы  fetchCountries(searchQuery).then(renderCountryCard).catch(onFetchError);
-
-  fetchCountries(searchQuery).then(renderCountryCard).catch(onFetchError);
-
-}
-function renderCountryCard(name) {
-  const markup = inputTemplate(name);
-  refs.container.innerHTML = markup;
-
-function fetchCountries(name) {
-  const url = `https://restcountries.eu/rest/v2/name/${name}`;
-  return fetch(url).then((response) => response.json());
-}
-function onFetchError(error) {
-  alert("something is wrong!!!");
-}
- */
